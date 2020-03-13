@@ -1,5 +1,4 @@
-<? php
-
+<?php
     function sanitizeFormPassword($inputText) {
         // remove html elements from input
         $inputText = strip_tags($inputText);
@@ -20,6 +19,8 @@
         // uppercase first character(make all characters lower(inputText))
         $inputText = ucFirst(strtolower($inputText))
     }
+    
+    
     // register button was pressed 
     if(isset($_POST['registerButton'])){
         $username = sanitizeFormUserName($_POST['username']);
@@ -30,6 +31,6 @@
         $password = sanitizeFormPassword($_POST['password']);
         $password2 = sanitizeFormPassword($_POST['password2']);
 
-
+        $account = new Account();
     }
 ?>
