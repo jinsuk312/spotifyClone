@@ -1,17 +1,22 @@
 <?php
     class Account {
-        public function __construct(){
+        private $errorArray;
 
+        public function __construct(){
+            $this->errorArrray = array();
         }
-        public function register() {
-            $this->validateUsername($username);
-            $this->validateFirstName($firstName);
-            $this->validateLastName($lastName);
-            $this->validateEmails($email, $email2);
-            $this->validatePasswords($password, $password2);
+        public function register($un, $fn, $ln, $em, $em2, $pw, $pw2) {
+            $this->validateUsername($un);
+            $this->validateFirstName($fn);
+            $this->validateLastName($ln);
+            $this->validateEmails($em, $em2);
+            $this->validatePasswords($pw, $pw2);
         }
         private function validateUsername($un){
-            echo "username fuction called"
+            if(strlen($un) > 25 || strlen($un) < 5){
+                array_push($this->errorArray, "Your username must be between 5-25 characters.");
+                return;
+            }
         }
         private function validateFirstName($fn){
             
