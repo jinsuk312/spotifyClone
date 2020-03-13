@@ -11,6 +11,16 @@
             $this->validateLastName($ln);
             $this->validateEmails($em, $em2);
             $this->validatePasswords($pw, $pw2);
+            // if it is empty(no errors)
+            // == not necessary
+            if(empty($this->errorArray) ==  true){
+                // insert into db
+                return true;
+            }
+            else{
+                // a function pushed an error
+                return false;
+            }
         }
         private function validateUsername($un){
             if(strlen($un) > 25 || strlen($un) < 5){
