@@ -1,7 +1,6 @@
 <?php
     include("includes/classes/Account.php")
     $account = new Account();
-    $account->register();
     include("includes/handlers/register-handler.php")
     include("includes/handlers/login-handler.php")
 ?>
@@ -30,14 +29,17 @@
         <form id="registerForm" action="register.php" method="POST">
         <h2>Create your free account.</h2>
         <p>      
+            <?php echo $account->getError("Your username must be between 5-25 characters"); ?>
             <label for="username=">Username</label>  
             <input id="username" name="username" type="text" placeholder="e.g bartSimpson" required>  
         </p>
-        <p>      
+        <p>    
+            <?php echo $account->getError("Your first name must be between 2-25 characters"); ?>
             <label for="firstName=">First name</label>  
             <input id="firstName" name="firstName" type="text" placeholder="e.g Bart" required>  
         </p>
          <p>      
+            <?php echo $account->getError("Your last name must be between 2-25 characters"); ?>
             <label for="lastName=">Last Name</label>  
             <input id="lastName" name="lastName" type="text" placeholder="e.g Simpson" required>  
         </p>
