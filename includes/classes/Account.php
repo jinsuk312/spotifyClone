@@ -44,8 +44,8 @@ class Account
         $date = date("Y-m-d");
         // actual insertion of data, sql query
         // I assigned auto increment for the first key/value in mysql DB
-        $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
-        // outputting error, because php wont add value
+        $result = mysqli_query($this->con, "INSERT INTO users VALUES (NULL, '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
+        // outputting error, because php wont add
         echo "Error: " . mysqli_error($this->con);
         return $result;
     }
