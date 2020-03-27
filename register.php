@@ -28,6 +28,24 @@ function getInputValue($name)
 </head>
 
 <body>
+    <!-- using php to determine what is displaying on the page -->
+    <?php
+    if (isset($_POST['registerButton'])) {
+        echo '<script>
+        $(document).ready(function() {
+            $("#loginForm").hide();
+            $("#registerForm").show();
+        });
+    </script>';
+    } else {
+        echo '<script>
+        $(document).ready(function() {
+            $("#loginForm").show();
+            $("#registerForm").hide();
+        });
+    </script>';
+    }
+    ?>
     <div id="background">
         <div id="loginContainer">
             <div id="inputContainer">
