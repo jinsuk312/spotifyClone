@@ -36,6 +36,8 @@ if (isset($_POST['registerButton'])) {
 
     // im trying to be explicit i know i can use: if($wasSuccessful)
     if ($wasSuccessful == true) {
+        // session variable
+        $_SESSION['userLoggedIn'] = $username;
         header("Location: index.php");
     }
 }

@@ -2,7 +2,7 @@
 include("includes/config.php");
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
-// passing the connection so that in account class
+// passing the connection so that its in account class
 $account = new Account($con);
 
 include("includes/handlers/register-handler.php");
