@@ -6,25 +6,22 @@ if (isset($_GET['id'])) {
 	header("Location: index.php");
 }
 
-$albumQuery = mysqli_query($con, "SELECT * FROM albums WHERE id='$albumId'");
-$album = mysqli_fetch_array($albumQuery);
-// artist is in quotes so it makes the below query incorrect
-$artistId = $album['artist'];
-
-$artistQuery = mysqli_query($con, "SELECT * FROM artists WHERE id='$artistId'");
-$artist = mysqli_fetch_array($artistQuery);
-
-echo $artist['name'] . "<br>";
-echo $album['title'];
-
-
-
+$album = new Album($con, $albumId);
+$artist = $album->getArtist();
 ?>
 
+<div class="entityInfo">
 
+	<div class="leftSection">
+		<img src="<?php echo $album->getArtworkPath(); ?>">
+	</div>
 
+	<div class="rightSection">
+		<h2><?php echo $album->getTitle(); ?></h2>
+		<span>By <?php echo $artist->getName(); ?></span>
+	</div>
 
-
+</div>
 
 
 <?php include("includes/footer.php"); ?>
