@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 include("includes/config.php");
+
+// logout manually by refreshing to homepage
+// session_destroy();
+
 // check to see if session variable is set (if user is logged in)
 if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
