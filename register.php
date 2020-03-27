@@ -21,6 +21,8 @@ function getInputValue($name)
 <head>
     <title>Welcome to Slotify!</title>
     <link rel="stylesheet" type="text/css" href="assets/css/register.css">
+    <!-- JQUERY CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
