@@ -1,4 +1,5 @@
 <?php
+// get 10 random songs
 $songQuery = mysqli_query($con, "SELECT id FROM songs ORDER BY RAND() LIMIT 10");
 
 $resultArray = array();
@@ -6,7 +7,7 @@ $resultArray = array();
 while ($row = mysqli_fetch_array($songQuery)) {
     array_push($resultArray, $row['id']);
 }
-
+// convert data into json object
 $jsonArray = json_encode($resultArray);
 ?>
 
@@ -17,11 +18,17 @@ $jsonArray = json_encode($resultArray);
         setTrack(currentPlaylist[0], currentPlaylist, false);
     });
 
-
+    // request with 
     function setTrack(trackId, newPlaylist, play) {
+        $.post("includes/handlers/ajax/getSongJson.php", {
+            songId: trackId
+        }, function(data) {
+            var track = JSON.parse(data);
+            console.log(track);
+            audioElement.setTrack(track.path);
+            audioElement.play();
 
-        audioElement.setTrack("assets/music/bensound-clearday.mp3");
-
+        })
         if (play == true) {
             audioElement.play();
         }
