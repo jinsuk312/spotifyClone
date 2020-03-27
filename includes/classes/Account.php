@@ -10,6 +10,22 @@ class Account
         $this->con = $con;
         $this->errorArray = array();
     }
+
+    public function login($un, $pw){
+        // encrypt password
+        $pw = md5($pw);
+
+        $query = mysqli_query($this->con, "SELECT * FROM users WHERE usersname='$un' AND password='$pw'");
+
+        if(mysqli_num_rows($query) == 1){
+            return true;
+        }
+        else{
+            array_push($this->errorArray, Constants::$loginFailed);
+            return false
+        }
+    }
+
     // calls all those functions within itself (they are private)
     // ex: $thisinstanceoftheclass->thisfunction
     public function register($un, $fn, $ln, $em, $em2, $pw, $pw2)
